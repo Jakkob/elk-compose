@@ -33,10 +33,11 @@ services:
     image: docker.elastic.co/logstash/logstash:6.4.1
     container_name: logstash
     volumes:
-      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     environment:
       - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
+      - "LOG_LEVEL=debug"
     ports:
       - "5000:5000"
       - "6514:6514"
