@@ -20,8 +20,6 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.1
     container_name: kibana
-    volumes:
-      - ./kibana/config/:/opt/kibana/config/
     ports:
       - "5601:5601"
     links:
@@ -31,7 +29,7 @@ services:
     image: docker.elastic.co/logstash/logstash:6.4.1
     container_name: logstash
     volumes:
-      - ./logstash/config:/usr/share/logstash/config/
+      - ./logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
       - "5000:5000"
       - "6514:6514"
