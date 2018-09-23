@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Logstash - Ubiquiti</short>
+  <description>Service rules to allow Syslog and Netflow logs to be forwarded from Ubiquiti EdgeRouter products.</description>
+  <port port="5000" protocol="tcp"/>
+  <port port="6514" protocol="tcp"/>
+  <port port="2055" protocol="tcp"/>
+  <port port="5000" protocol="udp"/>
+  <port port="6514" protocol="udp"/>
+  <port port="2055" protocol="udp"/>
+</service>
