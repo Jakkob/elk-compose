@@ -34,14 +34,14 @@ services:
     container_name: logstash
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:z
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:z
     environment:
       - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
-      - "LOG_LEVEL=debug"
     ports:
       - "5000:5000"
       - "6514:6514"
       - "2055:2055"
+      - "9600:9600"
     depends_on:
       - elasticsearch
     networks:
