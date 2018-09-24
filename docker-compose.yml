@@ -32,7 +32,6 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:6.4.1
     container_name: logstash
-    command: --modules netflow -M "netflow.var.input.udp.port=2055" -M "netflow.var.elasticsearch.hosts=elasticsearch:9200"
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:z
