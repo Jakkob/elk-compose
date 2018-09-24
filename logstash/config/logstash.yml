@@ -1,7 +1,7 @@
 modules:
   - name: netflow
-  var.output.elasticsearch.host: http://elasticsearch:9200
-  var.input.udp.port: 2055
+    var.output.elasticsearch.host: http://elasticsearch:9200
+    var.input.udp.port: 2055
 http.host: "0.0.0.0"
 path.config: /usr/share/logstash/pipeline
 xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
