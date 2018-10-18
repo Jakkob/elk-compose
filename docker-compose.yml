@@ -40,7 +40,6 @@ services:
     ports:
       - "5000:5000"
       - "6514:6514"
-      - "2055:2055"
       - "9600:9600"
     depends_on:
       - elasticsearch
@@ -50,14 +49,11 @@ services:
   logstash-netflow:
     image: docker.elastic.co/logstash/logstash:6.4.1
     command: logstash --modules netflow -M "netflow.var.input.udp.port=2055" -M "netflow.var.elasticsearch.hosts=http://elasticsearch:9200"
-    container_name: logstash
+    container_name: logstash-netflow
     environment:
       - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
     ports:
-      - "5000:5000"
-      - "6514:6514"
       - "2055:2055"
-      - "9600:9600"
     depends_on:
       - elasticsearch
     networks:
