@@ -1,0 +1,64 @@
+actions:
+  1:
+    action: delete_syslog_indices
+    description: >-
+      Delete indices older than 90 days (based on index name), for syslog-
+      prefixed index names.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: syslog-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 90
+      exclude:
+  2:
+    action: delete_netflow_indices
+    description: >-
+      Delete indices older than 90 days (based on index name), for netflow-
+      prefixed index names.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: netflow-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 90
+      exclude:
+  3:
+    action: delete_monitoring_indices
+    description: >-
+      Delete indices older than 90 days (based on index name), for .monitoring-
+      prefixed index names.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: .monitoring-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 3
+      exclude:
